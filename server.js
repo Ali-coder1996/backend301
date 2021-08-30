@@ -6,12 +6,13 @@ require('dotenv').config();
 const axios = require('axios');
 app.use(express.json());
 const PORT=process.env.PORT;
+const MONGOSSE=process.env.MONGOSSE;
 
 const mongoose = require('mongoose');
 
 
 
-mongoose.connect('mongodb://ALi-Alhjouj:12345@cluster0-shard-00-00.frq5k.mongodb.net:27017,cluster0-shard-00-01.frq5k.mongodb.net:27017,cluster0-shard-00-02.frq5k.mongodb.net:27017/Drink?ssl=true&replicaSet=atlas-o7sno1-shard-0&authSource=admin&retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGOSSE, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const connection = mongoose.connection;
 connection.once('open', () => console.log('MongoDB connection established successfully'));
